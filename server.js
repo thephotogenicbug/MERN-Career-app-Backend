@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
+const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
+
 const app = express();
 app.use(cors());
 dotenv.config();
@@ -15,8 +17,15 @@ app.get("/", (req, res) => {
   res.send("api is running...");
 });
 
+// export routes
 const userRoutes = require("./routes/userRoutes");
 app.use("/api/users", userRoutes);
+
+
+// export ErrorHandlers
+const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 

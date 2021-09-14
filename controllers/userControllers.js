@@ -1,14 +1,14 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
 
-const registerUser = async (req, res) => {
+const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password, pic } = req.body;
 
   const userExist = await User.findOne({ email });
 
   if (userExist) {
     res.status(400);
-    throw new Error("User Already Exist");
+    throw new Error("User Already Exists");
   }
 
   const user = await User.create({
@@ -28,9 +28,9 @@ const registerUser = async (req, res) => {
     });
   } else {
     res.status(400);
-    throw new Error("Error");
+    throw new Error("Error ");
   }
-};
+});
 
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -47,7 +47,7 @@ const authUser = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(400);
-    throw new Error("Invalid Email or Password");
+    throw new Error("Invalid Email or password");
   }
 });
 
