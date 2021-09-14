@@ -19,7 +19,6 @@ app.get("/", (req, res) => {
 const userRoutes = require("./routes/userRoutes");
 app.use("/api/users", userRoutes);
 
-
 // export ErrorHandlers
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
 app.use(notFound);
