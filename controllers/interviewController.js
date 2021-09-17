@@ -7,13 +7,68 @@ const getInterviews = asyncHandler(async (req, res) => {
 });
 
 const createInterview = asyncHandler(async (req, res) => {
-  const { name, mobile } = req.body;
+  const {
+    name,
+    dob,
+    gender,
+    marital,
+    mobile,
+    email,
+    sslc,
+    puc,
+    grad,
+    postgrad,
+    workone,
+    worktwo,
+    workthree,
+    achone,
+    achtwo,
+    achthree,
+    address,
+  } = req.body;
 
-  if (!name || !mobile) {
+  if (
+    !name ||
+    !dob ||
+    !gender ||
+    !marital ||
+    !mobile ||
+    !email ||
+    !sslc ||
+    !puc ||
+    !grad ||
+    !postgrad ||
+    !workone ||
+    !worktwo ||
+    !workthree ||
+    !achone ||
+    !achtwo ||
+    !achthree ||
+    !address
+  ) {
     res.status(400);
     throw new Error("Please Fill all the fields");
   } else {
-    const interview = new Interview({ user: req.user._id, name, mobile });
+    const interview = new Interview({
+      user: req.user._id,
+      name,
+      dob,
+      gender,
+      marital,
+      mobile,
+      email,
+      sslc,
+      puc,
+      grad,
+      postgrad,
+      workone,
+      worktwo,
+      workthree,
+      achone,
+      achtwo,
+      achthree,
+      address,
+    });
 
     const createdInterview = await interview.save();
 
