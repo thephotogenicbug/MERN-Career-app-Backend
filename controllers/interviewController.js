@@ -6,6 +6,26 @@ const getInterviews = asyncHandler(async (req, res) => {
   res.json(interviews);
 });
 
+const getInterviewsadmin = asyncHandler(async (req, res) => {
+  const interviewsadmin = await Interview.find();
+  res.json(interviewsadmin);
+});
+
+const UpdateInterview = asyncHandler(async (req, res) => {
+  const { name } = req.body;
+
+  const interview = await Interview.findById(req.params.id);
+
+  if (interview) {
+    interview.name = name;
+
+    const updatedInterview = await interview.save();
+    res.json(updatedInterview);
+  } else {
+    res.status(404);
+    throw new Error("Note not found");
+  }
+});
 const createInterview = asyncHandler(async (req, res) => {
   const {
     name,
@@ -76,4 +96,9 @@ const createInterview = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { getInterviews, createInterview };
+module.exports = {
+  getInterviews,
+  createInterview,
+  getInterviewsadmin,
+  UpdateInterview,
+};
