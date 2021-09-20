@@ -22,6 +22,8 @@ app.use("/api/users", userRoutes);
 const interviewRoute = require("./routes/interviewRoutes");
 app.use("/api/interviewapi", interviewRoute);
 
+const adminRoutes = require("./routes/adminRoutes");
+app.use("/api/admin", adminRoutes);
 
 // export ErrorHandlers
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
