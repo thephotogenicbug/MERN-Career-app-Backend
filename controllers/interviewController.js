@@ -26,6 +26,13 @@ const UpdateInterview = asyncHandler(async (req, res) => {
     throw new Error("Note not found");
   }
 });
+
+const getInterviewById = asyncHandler(async (req,res) =>{
+   
+  const get = await Interview.findById({_id: req.params.id})
+
+  res.json(get)
+})
 const createInterview = asyncHandler(async (req, res) => {
   const {
     name,
@@ -101,4 +108,5 @@ module.exports = {
   createInterview,
   getInterviewsadmin,
   UpdateInterview,
+  getInterviewById
 };

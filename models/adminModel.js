@@ -28,13 +28,11 @@ const adminSchema = mongoose.Schema(
         "https://res.cloudinary.com/dv5jjlsd7/image/upload/v1631444571/user_1_qy7hlx.png",
     },
   },
-
   {
     timestamps: true,
   }
 );
 
-// encrpyt the user password
 adminSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
@@ -44,7 +42,6 @@ adminSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-// decrypt the user password
 adminSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };

@@ -22,7 +22,7 @@ app.use("/api/users", userRoutes);
 const interviewRoute = require("./routes/interviewRoutes");
 app.use("/api/interviewapi", interviewRoute);
 
-const adminRoutes = require("./routes/adminRoutes");
+const adminRoutes = require('./routes/adminRoutes')
 app.use("/api/admin", adminRoutes);
 
 // export ErrorHandlers
