@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 
 const interviewSchema = mongoose.Schema(
   {
+    position: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
@@ -10,66 +14,64 @@ const interviewSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-     gender:{
-       type:String,
-       required:true,
-     },
-     marital:{
-       type:String,
-       required:true,
-     },
-     mobile:{
-       type:String,
-       required:true,
-     },
-     email:{
-       type:String,
-       required:true,
-     },
-     sslc:{
-       type:String,
-       required:true,
-     },
-     puc:{
-       type:String,
-       required:true,
-     },
-     grad:{
-       type:String,
-       required:true,
-     },
-     postgrad:{
-       type:String,
-       required:true,
-     },
-     workone:{
-       type:String,
-       required:true,
-     },
-     worktwo:{
-       type:String,
-       required:true,
-     },
-     workthree:{
-       type:String,
-       required:true,
-     },
-     achone:{
-       type:String,
-       required:true,
-     },
-     achtwo:{
-       type:String,
-       required:true,
-     },
-     achthree:{
-       type:String,
-       required:true,
-     },
-     address:{
-       type:String,
-       required:true,
-     },
+    gender: {
+      type: String,
+      required: true,
+    },
+    marital: {
+      type: String,
+      required: true,
+    },
+    mobile: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    sslc: {
+      type: String,
+      required: true,
+    },
+    puc: {
+      type: String,
+      required: true,
+    },
+    grad: {
+      type: String,
+      required: true,
+    },
+    postgrad: {
+      type: String,
+      required: true,
+    },
+    workone: {
+      type: String,
+    },
+    worktwo: {
+      type: String,
+    },
+    workthree: {
+      type: String,
+    },
+    achone: {
+      type: String,
+    },
+    achtwo: {
+      type: String,
+    },
+    achthree: {
+      type: String,
+    },
+    address: {
+      type: String,
+      required: true,
+    },
+    report: {
+      type: String,
+      required: true,
+    },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,

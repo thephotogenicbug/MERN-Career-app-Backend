@@ -12,12 +12,30 @@ const getInterviewsadmin = asyncHandler(async (req, res) => {
 });
 
 const UpdateInterview = asyncHandler(async (req, res) => {
-  const { name } = req.body;
+  const { name, email, dob, gender, marital, mobile, sslc, puc, grad, postgrad, workone, worktwo, workthree, achone, achtwo, achthree, address, position, report } = req.body;
 
   const interview = await Interview.findById(req.params.id);
 
   if (interview) {
     interview.name = name;
+    interview.email = email;
+    interview.dob = dob;
+    interview.gender = gender;
+    interview.marital = marital;
+    interview.mobile = mobile;
+    interview.sslc = sslc;
+    interview.puc = puc;
+    interview.grad = grad;
+    interview.postgrad = postgrad;
+    interview.workone = workone;
+    interview.worktwo = worktwo;
+    interview.workthree = workthree;
+    interview.achone = achone;
+    interview.achtwo = achtwo;
+    interview.achthree = achthree;
+    interview.address = address;
+    interview.position = position;
+    interview.report = report;
 
     const updatedInterview = await interview.save();
     res.json(updatedInterview);
@@ -27,14 +45,14 @@ const UpdateInterview = asyncHandler(async (req, res) => {
   }
 });
 
-const getInterviewById = asyncHandler(async (req,res) =>{
-   
-  const get = await Interview.findById({_id: req.params.id})
+const getInterviewById = asyncHandler(async (req, res) => {
+  const get = await Interview.findById({ _id: req.params.id });
 
-  res.json(get)
-})
+  res.json(get);
+});
 const createInterview = asyncHandler(async (req, res) => {
   const {
+    position,
     name,
     dob,
     gender,
@@ -52,6 +70,7 @@ const createInterview = asyncHandler(async (req, res) => {
     achtwo,
     achthree,
     address,
+    report,
   } = req.body;
 
   if (
@@ -65,19 +84,15 @@ const createInterview = asyncHandler(async (req, res) => {
     !puc ||
     !grad ||
     !postgrad ||
-    !workone ||
-    !worktwo ||
-    !workthree ||
-    !achone ||
-    !achtwo ||
-    !achthree ||
-    !address
+    !address ||
+    !report
   ) {
     res.status(400);
     throw new Error("Please Fill all the fields");
   } else {
     const interview = new Interview({
       user: req.user._id,
+      position,
       name,
       dob,
       gender,
@@ -95,6 +110,7 @@ const createInterview = asyncHandler(async (req, res) => {
       achtwo,
       achthree,
       address,
+      report,
     });
 
     const createdInterview = await interview.save();
@@ -108,5 +124,5 @@ module.exports = {
   createInterview,
   getInterviewsadmin,
   UpdateInterview,
-  getInterviewById
+  getInterviewById,
 };
