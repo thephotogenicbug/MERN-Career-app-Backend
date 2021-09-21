@@ -32,19 +32,15 @@ const interviewSchema = mongoose.Schema(
     },
     sslc: {
       type: String,
-      required: true,
     },
     puc: {
       type: String,
-      required: true,
     },
     grad: {
       type: String,
-      required: true,
     },
     postgrad: {
       type: String,
-      required: true,
     },
     workone: {
       type: String,
@@ -66,7 +62,6 @@ const interviewSchema = mongoose.Schema(
     },
     address: {
       type: String,
-      required: true,
     },
     report: {
       type: String,
